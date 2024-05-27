@@ -186,7 +186,7 @@ namespace onlineStore.Services.ShoppingCartAPI.Controllers
 
             try
             {
-                await _messageBus.PublishMessage(cartDto, _configuration.GetValue<string>("TopicAndQueueNames:EmailShoppingCart"));
+                await _messageBus.PublishMessage(cartDto, _configuration.GetValue<string>("TopicAndQueueNames:EmailShoppingCartQueue"));
 
             }
             catch (Exception ex)

@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using onlineStore.Services.EmailAPI.Models;
 
 namespace onlineStore.Services.EmailAPI.Data
 {
