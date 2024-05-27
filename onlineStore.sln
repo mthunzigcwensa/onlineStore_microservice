@@ -17,9 +17,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Store.Web", "Store.Web\Stor
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "onlineStore.Services.AuthAPI", "onlineStore.Services.AuthAPI\onlineStore.Services.AuthAPI.csproj", "{B9DF16BD-D479-4CBC-830D-80D1EAE680E0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "onlineStore.Services.ProductAPI", "onlineStore.Services.ProductAPI\onlineStore.Services.ProductAPI.csproj", "{4ABCA762-4CA3-4828-9B4C-0FC272CE4413}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "onlineStore.Services.ProductAPI", "onlineStore.Services.ProductAPI\onlineStore.Services.ProductAPI.csproj", "{4ABCA762-4CA3-4828-9B4C-0FC272CE4413}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "onlineStore.Services.ShoppingCartAPI", "onlineStore.Services.ShoppingCartAPI\onlineStore.Services.ShoppingCartAPI.csproj", "{A07C1B10-E95B-49A7-8E8F-C0F9126F0663}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "onlineStore.Services.ShoppingCartAPI", "onlineStore.Services.ShoppingCartAPI\onlineStore.Services.ShoppingCartAPI.csproj", "{A07C1B10-E95B-49A7-8E8F-C0F9126F0663}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "onlineStore.MessageBus", "onlineStore.MessageBus\onlineStore.MessageBus.csproj", "{795AB2B3-E246-42D1-9994-E39A843A5D2E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -47,6 +49,10 @@ Global
 		{A07C1B10-E95B-49A7-8E8F-C0F9126F0663}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A07C1B10-E95B-49A7-8E8F-C0F9126F0663}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A07C1B10-E95B-49A7-8E8F-C0F9126F0663}.Release|Any CPU.Build.0 = Release|Any CPU
+		{795AB2B3-E246-42D1-9994-E39A843A5D2E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{795AB2B3-E246-42D1-9994-E39A843A5D2E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{795AB2B3-E246-42D1-9994-E39A843A5D2E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{795AB2B3-E246-42D1-9994-E39A843A5D2E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -57,6 +63,7 @@ Global
 		{B9DF16BD-D479-4CBC-830D-80D1EAE680E0} = {37BDD993-8CE5-4769-913D-D4F58B26D108}
 		{4ABCA762-4CA3-4828-9B4C-0FC272CE4413} = {37BDD993-8CE5-4769-913D-D4F58B26D108}
 		{A07C1B10-E95B-49A7-8E8F-C0F9126F0663} = {37BDD993-8CE5-4769-913D-D4F58B26D108}
+		{795AB2B3-E246-42D1-9994-E39A843A5D2E} = {193B912D-4936-4325-A9DD-04E1C6A1B922}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {DD39130D-5D78-4661-8775-87020339115A}
