@@ -4,6 +4,7 @@ using onlineStore.Services.AuthAPI.Data;
 using onlineStore.Services.AuthAPI.Models;
 using onlineStore.Services.AuthAPI.Service.IService;
 using onlineStore.Services.AuthAPI.Service;
+using onlineStore.MessageBus;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -19,6 +20,7 @@ builder.Services.AddIdentity<ApplicationUser, IdentityRole>().AddEntityFramework
 builder.Services.AddControllers();
 builder.Services.AddScoped<IJwtTokenGenerator, JwtTokenGenerator>();
 builder.Services.AddScoped<IAuthService, AuthService>();
+builder.Services.AddScoped<IMessageBus, MessageBus>();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();

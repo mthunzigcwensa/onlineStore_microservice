@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using onlineStore.MessageBus;
 using onlineStore.Services.AuthAPI.Models.Dto;
 using onlineStore.Services.AuthAPI.Service.IService;
 
@@ -11,13 +12,17 @@ namespace onlineStore.Services.AuthAPI.Controllers
     {
         private readonly IAuthService _authService;
         protected ResponseDto _response;
-        
+        private readonly IMessageBus _messageBus;
+        private readonly IConfiguration _configuration;
 
-        public AuthAPIController(IAuthService authService)
+
+        public AuthAPIController(IAuthService authService, IMessageBus messageBus, IConfiguration configuration)
         {
             _authService = authService;
             _response = new();
-            
+            _messageBus = messageBus;
+            _configuration = configuration;
+
         }
         [HttpPost("register")]
         public async Task<IActionResult> Register([FromBody] RegistrationRequestDto model)
@@ -29,6 +34,8 @@ namespace onlineStore.Services.AuthAPI.Controllers
                 _response.Message = errorMessage;
                 return BadRequest(_response);
             }
+            await _messageBus.PublishMessage(model.Email, _configuration.GetValue<string>("TopicAndQueueNames:RegisterUserQueue"));
+
             return Ok(_response);
         }
 
