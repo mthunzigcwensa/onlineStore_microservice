@@ -22,4 +22,8 @@
     <PackageReference Include="Swashbuckle.AspNetCore.Newtonsoft" Version="6.6.1" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\onlineStore.MessageBus\onlineStore.MessageBus.csproj" />
+  </ItemGroup>
+
 </Project>
