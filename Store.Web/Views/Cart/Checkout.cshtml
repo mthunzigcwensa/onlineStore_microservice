@@ -1,12 +1,10 @@
 ﻿@model CartDto
-
 <form method="post">
     <input asp-for="CartHeader.UserId" hidden />
     <input asp-for="CartHeader.CartHeaderId" hidden />
     <input asp-for="CartHeader.CouponCode" hidden />
     <input asp-for="CartHeader.Discount" hidden />
     <input asp-for="CartHeader.CartTotal" hidden />
-
     <div class="border mt-2 p-4 rounded">
         <div class="container row">
             <div class="col-md-7 col-12">
@@ -34,7 +32,6 @@
                     <div class="col-12 pt-2">
                         <label class="col-form-label">Order will be ready in 30minutes after placing order. If you place order when restaurant is closed it will be ready next day.</label>
                     </div>
-
                 </div>
             </div>
             <div class="col-5">
@@ -45,7 +42,6 @@
                                 <div class="col-6">
                                     Product Details
                                 </div>
-
                                 <div class="col-3">
                                     Price
                                 </div>
@@ -61,10 +57,8 @@
                                 <div class="col-6">
                                     <span style="font-size:20px">@cartObj.Product.Name</span>
                                 </div>
-
                                 <div class="col-3" style="font-size:11px;">
                                     <span style="font-size:17px;"> @cartObj.Product.Price.ToString("c")</span>
-
                                 </div>
                                 <div class="col-3" style="font-size:11px;">
                                     <span style="font-size:17px;"> @cartObj.Count</span>
@@ -81,11 +75,9 @@
                                 }
                             </div>
                         </div>
-
                     </div>
                     <div class="card-footer">
                         <div class="row">
-
                             <div class="col-12 ">
                                 <button type="submit" class="btn btn-success form-control ">
                                     <span>Place Order</span>
@@ -98,7 +90,6 @@
         </div>
     </div>
 </form>
-
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
 }

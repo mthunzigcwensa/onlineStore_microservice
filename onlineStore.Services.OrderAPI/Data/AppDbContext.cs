@@ -11,5 +11,6 @@ namespace onlineStore.Services.OrderAPI.Data
 
         public DbSet<OrderHeader> OrderHeaders { get; set; }
         public DbSet<OrderDetails> OrderDetails { get; set; }
+
     }
 }

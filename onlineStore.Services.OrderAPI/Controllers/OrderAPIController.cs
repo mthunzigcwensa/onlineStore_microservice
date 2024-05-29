@@ -37,7 +37,7 @@ namespace onlineStore.Services.OrderAPI.Controllers
                 orderHeaderDto.Status = SD.Status_Pending;
                 orderHeaderDto.OrderDetails = _mapper.Map<IEnumerable<OrderDetailsDto>>(cartDto.CartDetails);
 
-                OrderHeader orderCreated =  _db.OrderHeaders.Add(_mapper.Map<OrderHeader>(orderHeaderDto)).Entity;
+                OrderHeader orderCreated = _db.OrderHeaders.Add(_mapper.Map<OrderHeader>(orderHeaderDto)).Entity;
                 await _db.SaveChangesAsync();
 
                 orderHeaderDto.OrderHeaderId = orderCreated.OrderHeaderId;
@@ -46,9 +46,9 @@ namespace onlineStore.Services.OrderAPI.Controllers
             catch (Exception ex)
             {
                 _response.IsSuccess = false;
-                _response.Message=ex.Message;
+                _response.Message = ex.Message;
             }
             return _response;
         }
     }
- }
+}
