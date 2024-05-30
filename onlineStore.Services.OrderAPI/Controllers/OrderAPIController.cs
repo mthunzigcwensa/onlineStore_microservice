@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Stripe.Checkout;
 using Stripe;
+using onlineStore.MessageBus;
 namespace onlineStore.Services.OrderAPI.Controllers
 {
     [Route("api/order")]
@@ -19,13 +20,19 @@ namespace onlineStore.Services.OrderAPI.Controllers
         private IMapper _mapper;
         private readonly AppDbContext _db;
         private IProductService _productService;
+        private readonly IMessageBus _messageBus;
+        private readonly IConfiguration _configuration;
         public OrderAPIController(AppDbContext db,
-            IProductService productService, IMapper mapper)
+            IProductService productService, IMapper mapper, IConfiguration configuration
+            , IMessageBus messageBus)
         {
             _db = db;
+            _messageBus = messageBus;
             this._response = new ResponseDto();
             _productService = productService;
             _mapper = mapper;
+            _configuration = configuration;
+
         }
         [Authorize]
         [HttpPost("CreateOrder")]
@@ -130,6 +137,15 @@ namespace onlineStore.Services.OrderAPI.Controllers
                     orderHeader.PaymentIntentId = paymentIntent.Id;
                     orderHeader.Status = SD.Status_Approved;
                     _db.SaveChanges();
+
+                    RewardsDto rewardsDto = new()
+                    {
+                        OrderId = orderHeader.OrderHeaderId,
+                        RewardsActivity = Convert.ToInt32(orderHeader.OrderTotal),
+                        UserId = orderHeader.UserId
+                    };
+                    string topicName = _configuration.GetValue<string>("TopicAndQueueNames:OrderCreatedTopic");
+                    await _messageBus.PublishMessage(rewardsDto, topicName);
 
                     _response.Result = _mapper.Map<OrderHeaderDto>(orderHeader);
                 }
