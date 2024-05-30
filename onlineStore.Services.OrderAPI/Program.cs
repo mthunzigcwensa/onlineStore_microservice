@@ -72,7 +72,8 @@ app.UseSwaggerUI(c =>
         c.RoutePrefix = string.Empty;
     }
 });
-//Stripe.StripeConfiguration.ApiKey = builder.Configuration.GetSection("Stripe:SecretKey").Get<string>();
+
+Stripe.StripeConfiguration.ApiKey = builder.Configuration.GetSection("Stripe:SecretKey").Get<string>();
 
 app.UseHttpsRedirection();
 app.UseAuthentication();

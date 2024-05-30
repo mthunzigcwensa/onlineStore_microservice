@@ -87,7 +87,17 @@ namespace onlineStore.Services.CouponAPI.Controllers
 				Coupon coupon = _mapper.Map<Coupon>(couponDto);
 				_db.Coupons.Add(coupon);
 				_db.SaveChanges();
-				_response.Result = _mapper.Map<CouponDto>(coupon);
+
+                var options = new Stripe.CouponCreateOptions
+                {
+                    AmountOff = (long)(couponDto.DiscountAmount * 100),
+                    Name = couponDto.CouponCode,
+                    Currency = "usd",
+                    Id = couponDto.CouponCode,
+                };
+                var service = new Stripe.CouponService();
+                service.Create(options);
+                _response.Result = _mapper.Map<CouponDto>(coupon);
 			} 
 			catch (Exception ex) 
 			{
@@ -126,8 +136,11 @@ namespace onlineStore.Services.CouponAPI.Controllers
 				Coupon coupon = _db.Coupons.First(u => u.CouponId == id);
 				_db.Coupons.Remove(coupon);
 				_db.SaveChanges();
-				//_response.Result = _mapper.Map<CouponDto>(coupon);
-			}
+
+                var service = new Stripe.CouponService();
+                service.Delete(coupon.CouponCode);
+                //_response.Result = _mapper.Map<CouponDto>(coupon);
+            }
 			catch (Exception ex)
 			{
 				_response.IsSuccess = false;

@@ -1,0 +1,6 @@
+@Online.Services.RewardAPI_HostAddress = http://localhost:5056
+
+GET {{Online.Services.RewardAPI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
