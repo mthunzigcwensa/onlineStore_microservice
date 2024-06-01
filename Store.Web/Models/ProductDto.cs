@@ -14,6 +14,8 @@ namespace Store.Web.Models
 		public string? ImageLocalPath { get; set; }
 		[Range(1, 100)]
 		public int Count { get; set; } = 1;
-		public IFormFile? Image { get; set; }
+        [MaxFileSize(1)]
+        [AllowedExtensions(new string[] { ".jpg", ".png" })]
+        public IFormFile? Image { get; set; }
 	}
 }
