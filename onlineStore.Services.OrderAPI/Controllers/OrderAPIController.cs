@@ -32,8 +32,8 @@ namespace onlineStore.Services.OrderAPI.Controllers
             _productService = productService;
             _mapper = mapper;
             _configuration = configuration;
-
         }
+
         [Authorize]
         [HttpPost("CreateOrder")]
         public async Task<ResponseDto> CreateOrder([FromBody] CartDto cartDto)
@@ -114,30 +114,23 @@ namespace onlineStore.Services.OrderAPI.Controllers
             }
             return _response;
         }
-
-
         [Authorize]
         [HttpPost("ValidateStripeSession")]
         public async Task<ResponseDto> ValidateStripeSession([FromBody] int orderHeaderId)
         {
             try
             {
-
                 OrderHeader orderHeader = _db.OrderHeaders.First(u => u.OrderHeaderId == orderHeaderId);
-
                 var service = new SessionService();
                 Session session = service.Get(orderHeader.StripeSessionId);
-
                 var paymentIntentService = new PaymentIntentService();
                 PaymentIntent paymentIntent = paymentIntentService.Get(session.PaymentIntentId);
-
                 if (paymentIntent.Status == "succeeded")
                 {
                     //then payment was successful
                     orderHeader.PaymentIntentId = paymentIntent.Id;
                     orderHeader.Status = SD.Status_Approved;
                     _db.SaveChanges();
-
                     RewardsDto rewardsDto = new()
                     {
                         OrderId = orderHeader.OrderHeaderId,
@@ -146,7 +139,6 @@ namespace onlineStore.Services.OrderAPI.Controllers
                     };
                     string topicName = _configuration.GetValue<string>("TopicAndQueueNames:OrderCreatedTopic");
                     await _messageBus.PublishMessage(rewardsDto, topicName);
-
                     _response.Result = _mapper.Map<OrderHeaderDto>(orderHeader);
                 }
 
