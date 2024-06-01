@@ -27,7 +27,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "onlineStore.Services.EmailA
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "onlineStore.Services.OrderAPI", "onlineStore.Services.OrderAPI\onlineStore.Services.OrderAPI.csproj", "{8FA2700F-E468-4542-B0B0-9E00838DFE0E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Online.Services.RewardAPI", "Online.Services.RewardAPI\Online.Services.RewardAPI.csproj", "{D7F209D9-4C82-43A0-8241-27EBC5BAF665}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Online.Services.RewardAPI", "Online.Services.RewardAPI\Online.Services.RewardAPI.csproj", "{D7F209D9-4C82-43A0-8241-27EBC5BAF665}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "onlineStore.GatewaySolution", "onlineStore.GatewaySolution\onlineStore.GatewaySolution.csproj", "{69214D68-8253-49AA-917C-6031AF69C1DB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -71,6 +73,10 @@ Global
 		{D7F209D9-4C82-43A0-8241-27EBC5BAF665}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D7F209D9-4C82-43A0-8241-27EBC5BAF665}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D7F209D9-4C82-43A0-8241-27EBC5BAF665}.Release|Any CPU.Build.0 = Release|Any CPU
+		{69214D68-8253-49AA-917C-6031AF69C1DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{69214D68-8253-49AA-917C-6031AF69C1DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{69214D68-8253-49AA-917C-6031AF69C1DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{69214D68-8253-49AA-917C-6031AF69C1DB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
