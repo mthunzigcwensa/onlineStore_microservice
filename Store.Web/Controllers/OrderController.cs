@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using Store.Web.Models;
 using Store.Web.Service.IService;
@@ -14,6 +15,7 @@ namespace Store.Web.Controllers
         {
             _orderService = orderService;
         }
+        [Authorize]
         public IActionResult OrderIndex()
         {
             return View();
@@ -55,9 +57,10 @@ namespace Store.Web.Controllers
         }
     
 
-    [HttpGet]
+        [HttpGet]
+        [Authorize]
 
-		public async Task<IActionResult> OrderDetail(int orderId)
+        public async Task<IActionResult> OrderDetail(int orderId)
 		{
 			OrderHeaderDto orderHeaderDto = new OrderHeaderDto();
 			string userId = User.Claims.Where(u => u.Type == JwtRegisteredClaimNames.Sub)?.FirstOrDefault()?.Value;
