@@ -18,7 +18,7 @@ namespace Store.Web.Controllers
 			_cartService = cartService;
 		}
 
-		public async Task<IActionResult> Index()
+		public async Task<IActionResult> ProductIndex()
 		{
 			List<ProductDto>? list = new();
 
@@ -83,7 +83,7 @@ namespace Store.Web.Controllers
             if (response != null && response.IsSuccess)
             {
                 TempData["success"] = "Item has been added to the Shopping Cart";
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(ProductIndex));
             }
             else
             {

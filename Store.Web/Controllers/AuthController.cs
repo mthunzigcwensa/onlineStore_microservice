@@ -38,7 +38,7 @@ namespace Store.Web.Controllers
 
                  await SignInUser(loginResponseDto);
                 _tokenProvider.SetToken(loginResponseDto.Token);
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("ProductIndex", "Home");
             }
             else
             {

@@ -2,12 +2,12 @@ using Store.Web.Service.IService;
 using Store.Web.Service;
 using Store.Web.Utility;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.Extensions.Logging;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-
 
 builder.Services.AddHttpContextAccessor();
 builder.Services.AddHttpClient();
@@ -22,7 +22,6 @@ SD.OrderAPIBase = builder.Configuration["ServiceUrls:OrderAPI"];
 SD.AuthAPIBase = builder.Configuration["ServiceUrls:AuthAPI"];
 SD.ProductAPIBase = builder.Configuration["ServiceUrls:ProductAPI"];
 SD.ShoppingCartAPIBase = builder.Configuration["ServiceUrls:ShoppingCartAPI"];
-
 
 builder.Services.AddScoped<IBaseService, BaseService>();
 builder.Services.AddScoped<ITokenProvider, TokenProvider>();
@@ -39,15 +38,22 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
         options.AccessDeniedPath = "/Auth/AccessDenied";
     });
 
-
 var app = builder.Build();
+
+// Configure logging
+var logger = LoggerFactory.Create(loggingBuilder =>
+{
+    loggingBuilder.AddConsole();
+}).CreateLogger<Program>();
+
+logger.LogInformation("Application starting up");
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
-	app.UseExceptionHandler("/Home/Error");
-	// The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-	app.UseHsts();
+    app.UseDeveloperExceptionPage(); // Temporarily enable detailed error page
+    app.UseExceptionHandler("/Home/Error");
+    app.UseHsts();
 }
 
 app.UseHttpsRedirection();
@@ -57,8 +63,15 @@ app.UseRouting();
 app.UseAuthentication();
 app.UseAuthorization();
 
+// Redirect root URL to Home/ProductIndex
+app.MapGet("/", context =>
+{
+    context.Response.Redirect("/Home/ProductIndex");
+    return Task.CompletedTask;
+});
+
 app.MapControllerRoute(
-	name: "default",
-	pattern: "{controller=Home}/{action=Index}/{id?}");
+    name: "default",
+    pattern: "{controller=Home}/{action=ProductIndex}/{id?}");
 
 app.Run();
