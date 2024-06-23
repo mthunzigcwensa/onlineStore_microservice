@@ -123,7 +123,7 @@ namespace Store.Web.Controllers
         public async Task<IActionResult> Logout()
         {
             await HttpContext.SignOutAsync();          
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("ProductIndex", "Home");
         }
     }
 }

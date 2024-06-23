@@ -19,3 +19,22 @@ namespace Store.Web.Models
         public IFormFile? Image { get; set; }
 	}
 }
+
+/*
+                    VideoID
+                    Coverimg
+                    CoverimgUrl
+                    CoverimgLocalPath
+                    Video
+                    VideogUrl
+                    VideoLocalPath
+                    tittle
+                    Description
+                    addedbyDate
+                    uploaderID
+
+
+                    
+
+                    
+         */          

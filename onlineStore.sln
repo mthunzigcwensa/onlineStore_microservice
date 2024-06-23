@@ -29,7 +29,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "onlineStore.Services.OrderA
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Online.Services.RewardAPI", "Online.Services.RewardAPI\Online.Services.RewardAPI.csproj", "{D7F209D9-4C82-43A0-8241-27EBC5BAF665}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "onlineStore.GatewaySolution", "onlineStore.GatewaySolution\onlineStore.GatewaySolution.csproj", "{69214D68-8253-49AA-917C-6031AF69C1DB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "onlineStore.GatewaySolution", "onlineStore.GatewaySolution\onlineStore.GatewaySolution.csproj", "{69214D68-8253-49AA-917C-6031AF69C1DB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -91,6 +91,7 @@ Global
 		{945C150A-F4F0-4862-BAC3-C650491CDDCB} = {37BDD993-8CE5-4769-913D-D4F58B26D108}
 		{8FA2700F-E468-4542-B0B0-9E00838DFE0E} = {37BDD993-8CE5-4769-913D-D4F58B26D108}
 		{D7F209D9-4C82-43A0-8241-27EBC5BAF665} = {37BDD993-8CE5-4769-913D-D4F58B26D108}
+		{69214D68-8253-49AA-917C-6031AF69C1DB} = {187C8B96-B57F-4E30-8825-0CC828F9F3F7}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {DD39130D-5D78-4661-8775-87020339115A}
